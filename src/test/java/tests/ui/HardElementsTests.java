@@ -1,4 +1,4 @@
-package ui;
+package tests.ui;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
@@ -119,6 +119,18 @@ public class HardElementsTests {
 
         List<WebElement> lastElements = driver.findElements(By.xpath("//a[contains(text(), 'Sub Sub Item')]"));
          Assertions.assertEquals(2,lastElements.size());
+    }
+
+    public void checkBoxTest(){
+        driver.get("http://85.192.34.140:8081/");
+        WebElement  elementsCard = driver.findElement(By.xpath("//div[@class='card-body']//h5[text()='Elements']"));
+        elementsCard.click();
+        WebElement elementsTextBox = driver.findElement(By.xpath("//span[text()='Check Box']"));
+        elementsTextBox.click();
+
+        WebElement openDir = driver.findElement(By.xpath("//button[@class='rct-collapse rct-collapse-btn']"));
+        openDir.click();
+
     }
 
 }
