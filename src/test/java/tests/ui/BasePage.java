@@ -1,20 +1,17 @@
-package ui.wilberries.pages;
+package tests.ui;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
 
-    private By pageLoader = By.xpath("//div[@class='general-preloader']");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -31,11 +28,26 @@ public class BasePage {
         js.executeScript("arguments[0].click;", driver.findElement(element));
     }
 
-    public void waitPageLoads(){
+    public void waitPageLoadsWb(){
+        By pageLoader = By.xpath("//div[@class='general-preloader']");
         wait.until(ExpectedConditions.invisibilityOfElementLocated(pageLoader));
     }
 
     public void waitForElementUpdated(By locator){
         wait.until(ExpectedConditions.stalenessOf(driver.findElement(locator)));
+    }
+
+    public void clearTextFieldFull(By locator){
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(Keys.LEFT_CONTROL + "A");
+        driver.findElement(locator).sendKeys(Keys.BACK_SPACE);
+    }
+
+    public WebElement waitForTextPresentedInList(By list, String value){
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(list));
+        return driver.findElements(list).stream()
+                .filter(x->x.getText().contains(value))
+                .findFirst()
+                .orElseThrow(()-> new NoSuchElementException("Города нет" + value));
     }
 }

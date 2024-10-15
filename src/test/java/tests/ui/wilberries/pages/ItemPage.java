@@ -1,9 +1,8 @@
-package ui.wilberries.pages;
+package tests.ui.wilberries.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import tests.ui.BasePage;
 
 public class ItemPage extends BasePage {
 

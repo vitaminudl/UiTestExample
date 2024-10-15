@@ -1,4 +1,4 @@
-package ui.wilberries;
+package tests.ui;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -23,7 +23,6 @@ public class BaseTest {
         driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.get("https://www.wildberries.ru/");
     }
 
     @AfterEach

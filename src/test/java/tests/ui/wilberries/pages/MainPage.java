@@ -1,8 +1,9 @@
-package ui.wilberries.pages;
+package tests.ui.wilberries.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import tests.ui.BasePage;
 
 public class MainPage extends BasePage {
 
@@ -12,7 +13,7 @@ public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        waitPageLoads();
+        waitPageLoadsWb();
     }
 
     public SearchResultPage searchItem(String item){

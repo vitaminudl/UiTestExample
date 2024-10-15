@@ -1,7 +1,8 @@
-package ui.wilberries.pages;
+package tests.ui.wilberries.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import tests.ui.BasePage;
 
 public class SearchResultPage extends BasePage {
 
@@ -18,7 +19,7 @@ public class SearchResultPage extends BasePage {
 
     public ItemPage openItem(){
         driver.findElements(items).get(0).click();
-        waitPageLoads();
+        waitPageLoadsWb();
         return new ItemPage(driver);
     }
 

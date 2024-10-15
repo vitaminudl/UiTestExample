@@ -1,12 +1,18 @@
-package ui.wilberries;
+package tests.ui.wilberries;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.wilberries.pages.ItemPage;
-import ui.wilberries.pages.MainPage;
-import ui.wilberries.pages.SearchResultPage;
+import tests.ui.BaseTest;
+import tests.ui.wilberries.pages.ItemPage;
+import tests.ui.wilberries.pages.MainPage;
 
 public class WbFilterTests extends BaseTest {
+
+    @BeforeEach
+    public void openSite(){
+        driver.get("https://www.wildberries.ru/");
+    }
 
     @Test
     public void searchResultTest(){
