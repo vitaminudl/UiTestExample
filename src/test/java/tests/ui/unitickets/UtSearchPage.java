@@ -11,8 +11,8 @@ public class UtSearchPage extends BasePage {
     private By priceSelectedMain = By.xpath("//li[@class='price--current']//span[@class='prices__price currency_font currency_font--rub']");
     private By selectedDayForward = By.xpath("//li[@class='price--current']//a/span[1]");
     private By selectedDayBack = By.xpath("//li[@class='price--current']//a/span[3]");
-    private By listOfForwardDays = By.xpath("//div[class='ticket-action-airline-container']//following::span[@class='flight-brief-data__day'][1]");
-    private By listOfBackDays = By.xpath("//div[class='ticket-action-airline-container']//following::span[@class='flight-brief-data__day'][3]");
+    private By listOfForwardDays = By.xpath("//div[@class='ticket    ticket--with-labels   ticket--one_label_baggage']//following::span[@class='flight-brief-date__day'][1]");
+    private By listOfBackDays = By.xpath("//div[@class='ticket    ticket--with-labels   ticket--one_label_baggage']//following::span[@class='flight-brief-date__day'][3]");
 
     public UtSearchPage(WebDriver driver) {
         super(driver);
