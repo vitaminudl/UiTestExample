@@ -41,13 +41,12 @@ public class UtMainPage extends BasePage {
     }
 
     public UtMainPage setDayForward(int day){
-        driver.findElement(dateForward).click();
         getDay(day).click();
+        wait.until(ExpectedConditions.invisibilityOf(getDay(day)));
         return this;
     }
 
     public UtMainPage setDayBack(int day){
-        driver.findElement(dateBack).click();
         getDay(day).click();
         return this;
     }
@@ -57,7 +56,8 @@ public class UtMainPage extends BasePage {
         return  driver.findElement(dayLocator);
     }
 
-    public void search(){
+    public UtSearchPage search(){
         driver.findElement(searchBtn).click();
+        return new UtSearchPage(driver);
     }
 }
