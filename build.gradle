@@ -17,6 +17,7 @@ dependencies {
     testImplementation 'io.github.bonigarcia:webdrivermanager:3.8.1'
     testImplementation 'com.codeborne:selenide:6.17.1'
     testImplementation 'com.codeborne:pdf-test:1.8.1'
+    implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
 
 }
 
