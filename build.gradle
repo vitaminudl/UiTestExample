@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "io.qameta.allure" version "2.12.0"
+    id "io.freefair.lombok" version "8.10.2"
 }
 
 group = 'org.example'
@@ -18,6 +19,7 @@ dependencies {
     testImplementation 'com.codeborne:selenide:6.17.1'
     testImplementation 'com.codeborne:pdf-test:1.8.1'
     implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
 
 }
 
