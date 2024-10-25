@@ -2,9 +2,11 @@ package tests.ui.screenshots;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideConfig;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
@@ -18,6 +20,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ScreenShotsTest {
     private String testName;
@@ -26,6 +30,12 @@ public class ScreenShotsTest {
     @BeforeEach
     public void initTestName(TestInfo info){
         info.getTestMethod().get().getName();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        Selenide.closeWindow();
+        Configuration.browserCapabilities= new SelenideConfig().browserCapabilities();
     }
 
     @BeforeAll
@@ -42,6 +52,29 @@ public class ScreenShotsTest {
         Selenide.open("https://github.com/vitaminudl");
         assertFullScreen();
     }
+
+    @Test
+    public void mobileIphoneXrTest() throws IOException {
+        Configuration.browserSize = "414x896";
+        Selenide.open("https://github.com/vitaminudl");
+        assertFullScreen();
+    }
+
+    public void mobileIphoneXrUsingCollectionTest() throws IOException {
+        Map<String, String> mobileEmulator = new HashMap<>();
+        mobileEmulator.put("deviceName", "iPhone XR");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("mobileEmulator", mobileEmulator);
+        Configuration.browserCapabilities = chromeOptions;
+
+        Selenide.open("https://github.com/vitaminudl");
+        assertFullScreen();
+    }
+
+
+
+
+
 
     private void assertFullScreen() throws IOException {
         Screenshot screenshot = new AShot()
