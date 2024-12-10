@@ -2,11 +2,13 @@ package tests.ui.wilberries;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.ui.BaseTest;
 import tests.ui.wilberries.pages.ItemPage;
 import tests.ui.wilberries.pages.MainPage;
 
+@Tag("SMOKE")
 public class WbFilterTests extends BaseTest {
 
     @BeforeEach

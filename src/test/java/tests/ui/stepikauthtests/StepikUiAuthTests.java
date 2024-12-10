@@ -3,10 +3,15 @@ package tests.ui.stepikauthtests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import io.netty.handler.ssl.OpenSslX509KeyManagerFactory;
+import listeners.RetryListener;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.$x;
 
+@Tag("UI")
+@ExtendWith(RetryListener.class)
 public class StepikUiAuthTests {
     private String login = "victovik319@gmail.com";
     private String pass = "y1FA6xW1nXUL";

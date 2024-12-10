@@ -2,12 +2,14 @@ package tests.ui.selenoid;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import listeners.RetryListener;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 @ExtendWith(AllureLogsExtension.class)
+@ExtendWith(RetryListener.class)
 public class SelenoidTests {
 
     @Test

@@ -1,7 +1,9 @@
 package tests.ui;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import listeners.RetryListener;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+@ExtendWith(RetryListener.class)
 public class SeleniumTests {
     private WebDriver driver;
     private String downloadFolder = System.getProperty("user.dir") + File.separator + "build" + File.separator + "downloadFiles";
@@ -38,16 +41,22 @@ public class SeleniumTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
+    @AfterAll
+    public static void saveFailed(){
+        RetryListener.saveFailedTests();
+    }
+
     @AfterEach
     public void tearDown(){
         driver.close();
     }
 
+
     @Test
     public void simpleUiTest(){
-        String expectedTitle = "Олег Пендрак - Инженер по автоматизации тестирования QA Automation";
+        String expectedTitle = "Google";
 
-        driver.get("https://threadqa.ru");
+        driver.get("https://www.google.com/");
         String actualTittle = driver.getTitle();
 
         Assertions.assertEquals(expectedTitle,actualTittle);
