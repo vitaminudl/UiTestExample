@@ -2,10 +2,11 @@ package tests.ui.unitickets;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$x;
-
+@Tag("SMOKE")
 public class UtSelenideTest {
     @Test
     public void firstSelenideTest(){

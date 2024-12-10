@@ -41,7 +41,7 @@ public class UtMainSelenidePage {
     }
 
     public UtMainSelenidePage setDayBack(int day){
-//        dateBack.click();
+        dateBack.click();
         getDay(day).click();
         $x("//h2").click();
         return this;

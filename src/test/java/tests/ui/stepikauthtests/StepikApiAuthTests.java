@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -14,6 +15,7 @@ import java.util.*;
 import static com.codeborne.selenide.Selenide.$x;
 import static io.restassured.RestAssured.given;
 
+@Tag("API")
 public class StepikApiAuthTests {
 
     private ModelStepikAuth testUser;
