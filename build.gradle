@@ -20,6 +20,7 @@ dependencies {
     testImplementation 'com.codeborne:pdf-test:1.8.1'
     implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
     testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    testImplementation 'commons-io:commons-io:2.16.1'
 
 }
 

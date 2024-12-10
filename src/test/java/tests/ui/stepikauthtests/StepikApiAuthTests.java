@@ -5,9 +5,11 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
+import listeners.RetryListener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.Cookie;
 
 import java.util.*;
@@ -16,6 +18,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static io.restassured.RestAssured.given;
 
 @Tag("API")
+@ExtendWith(RetryListener.class)
 public class StepikApiAuthTests {
 
     private ModelStepikAuth testUser;

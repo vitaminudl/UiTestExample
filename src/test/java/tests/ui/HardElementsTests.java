@@ -1,19 +1,20 @@
 package tests.ui;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import listeners.RetryListener;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 import java.util.List;
 
-
+@ExtendWith(RetryListener.class)
 public class HardElementsTests {
     private WebDriver driver;
 
@@ -29,10 +30,16 @@ public class HardElementsTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
+    @AfterAll
+    public static void saveFailed(){
+        RetryListener.saveFailedTests();
+    }
+
     @AfterEach
     public void tearDown(){
         driver.close();
     }
+
 
     @Test
     public void authTest(){

@@ -1,13 +1,23 @@
 package tests.ui.unitickets;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
+import listeners.RetryListener;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import static com.codeborne.selenide.Selenide.$x;
+
 @Tag("SMOKE")
+@ExtendWith(RetryListener.class)
 public class UtSelenideTest {
+
+    @AfterAll
+    public static  void saveFailed(){
+        RetryListener.saveFailedTests();
+    }
+
     @Test
     public void firstSelenideTest(){
         int expectedDayForward = 25;
@@ -27,5 +37,6 @@ public class UtSelenideTest {
                 .assertMainDayForward(expectedDayForward)
                 .assertAllDaysBackShouldHaveDay(expectedDayBack)
                 .assertAllDaysForwardShouldHaveDay(expectedDayForward);
+        Assertions.fail();
     }
 }
